@@ -15,13 +15,21 @@ const Home: NextPage = ({ token }: any) => {
 }
 
 export async function getStaticProps(context: any) {
-	let res = await fetch("http://localhost:3000/api/token")
-	let resJson = await res.json()
-	console.log(resJson)
-	return {
-		props: {
-			token: resJson.access_token != "" ? resJson.access_token : "I hate u"
-		}, // will be passed to the page component as props
+	let resJson
+	try {
+		let res = await fetch("http://localhost:3000/api/token")
+		resJson = await res.json()
+		return {
+			props: {
+				token: resJson.access_token != "" ? resJson.access_token : "I hate u"
+			}, // will be passed to the page component as props
+		}
+	} catch (err) {
+		return {
+			props: {
+				token: "I hate u"
+			}, // will be passed to the page component as props
+		}
 	}
 }
 
