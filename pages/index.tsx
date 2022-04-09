@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import WebPlayback from '../components/WebPlayback'
+import WebPlayback from '../components/WebPlayBack'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'

@@ -8,7 +8,7 @@ const track = {
 	},
 	artists: [{ name: "" }],
 };
-function WebPlayback(props) {
+function WebPlayback(props: any) {
 	//function to convert rgb values to hex
 	const [is_active, setActive] = useState(false);
 	const [player, setPlayer] = useState(undefined);
@@ -25,10 +25,12 @@ function WebPlayback(props) {
 		script.src = "https://sdk.scdn.co/spotify-player.js";
 		script.async = true;
 		document.body.appendChild(script);
+		// @ts-ignore
 		window.onSpotifyWebPlaybackSDKReady = () => {
+			// @ts-ignore
 			const player = new window.Spotify.Player({
 				name: "Web Playback SDK",
-				getOAuthToken: (cb) => {
+				getOAuthToken: (cb: any) => {
 					cb(props.token);
 					console.log(props.token);
 				},
@@ -36,13 +38,13 @@ function WebPlayback(props) {
 			});
 			if (player) {
 				setPlayer(player);
-				player.addListener("ready", ({ device_id }) => {
+				player.addListener("ready", ({ device_id }: any) => {
 					console.log("Ready with Device ID", device_id);
 				});
-				player.addListener("not_ready", ({ device_id }) => {
+				player.addListener("not_ready", ({ device_id }: any) => {
 					console.log("Device ID has gone offline", device_id);
 				});
-				player.addListener("player_state_changed", (state) => {
+				player.addListener("player_state_changed", (state: any) => {
 					if (!state) {
 						return;
 					}
@@ -53,7 +55,7 @@ function WebPlayback(props) {
 					setArtistName(state.track_window.current_track.artists[0].name);
 					setAlbumName(state.track_window.current_track.album.name);
 					setActive(true);
-					player.getCurrentState().then((state) => {
+					player.getCurrentState().then((state: any) => {
 						!state ? setActive(false) : setActive(true);
 					});
 				});
@@ -63,10 +65,12 @@ function WebPlayback(props) {
 	}, []);
 	function HandleNextTrack() {
 		console.log("next track");
-		player.nextTrack();
+		// @ts-ignore
+		player?.nextTrack();
 	}
 	function HandlePreviousTrack() {
 		console.log("previous track");
+		// @ts-ignore
 		player.previousTrack();
 	}
 	return (
