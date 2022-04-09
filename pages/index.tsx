@@ -3,14 +3,14 @@ import WebPlayback from '../components/WebPlayback'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import Link from 'next/link'
 
 const Home: NextPage = ({ token }: any) => {
 	console.log(token)
-	return (
-		<>		{token !== "I hate u" && <div className='h-screen w-screen flex flex-row items-center justify-center '><WebPlayback token={token} /></div>}
-			{
-				token === "I hate u" && <div className='h-screen w-screen flex flex-row items-center justify-center '><a className='text-6xl ' href='/api/login'>hi</a></div>
-			}</>
+	return (<>		{token !== "I hate u" && <div className='h-screen w-screen flex flex-row items-center justify-center '><WebPlayback token={token} /></div>}
+		{
+			token === "I hate u" && <div className='h-screen w-screen flex flex-row items-center justify-center '><Link href='/api/login'><span className='text-6xl'>hi</span></Link></div>
+		}</>
 	)
 }
 
