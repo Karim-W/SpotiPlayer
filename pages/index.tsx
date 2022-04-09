@@ -17,7 +17,7 @@ const Home: NextPage = ({ token }: any) => {
 export async function getStaticProps(context: any) {
 	let resJson
 	try {
-		let res = await fetch("http://localhost:3000/api/token")
+		let res = await fetch(process.env.BASE_URL + "/api/token")
 		resJson = await res.json()
 		return {
 			props: {
