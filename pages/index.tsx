@@ -22,7 +22,7 @@ export async function getStaticProps(context: any) {
 		return {
 			props: {
 				token: resJson.access_token != "" ? resJson.access_token : "I hate u"
-			}, // will be passed to the page component as props
+			}, // will be passed to the page component as props 
 		}
 	} catch (err) {
 		return {
