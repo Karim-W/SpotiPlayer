@@ -11,12 +11,15 @@
   "dependencies": {
     "next": "12.1.4",
     "react": "18.0.0",
-    "react-dom": "18.0.0"
+    "react-dom": "18.0.0",
+    "react-palette": "^1.0.2",
+    "request": "^2.88.2"
   },
   "devDependencies": {
     "@types/node": "17.0.23",
     "@types/react": "18.0.0",
     "@types/react-dom": "18.0.0",
+    "@types/request": "^2.48.8",
     "autoprefixer": "^10.4.4",
     "eslint": "8.13.0",
     "eslint-config-next": "12.1.4",

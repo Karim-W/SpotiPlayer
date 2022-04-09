@@ -17,7 +17,7 @@ export default function handler(
     response_type: "code",
     client_id: process.env.SPOTIFY_CLIENT_ID ?? "",
     scope: scope,
-    redirect_uri: "http://localhost:3000",
+    redirect_uri: "http://localhost:3000/api/callback",
     state: state,
   });
 
