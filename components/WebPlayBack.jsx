@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/outline";
 import { usePalette } from "react-palette";
 const track = {
 	name: "",
@@ -60,44 +61,42 @@ function WebPlayback(props) {
 			}
 		};
 	}, []);
-	// if (!is_active) {
-	// 	return (
-	// 		<>
-	// 			<div className="container">
-	// 				<div className="main-wrapper">
-	// 					<b>
-	// 						Instance not active. Transfer your playback using your Spotify app
-	// 					</b>
-	// 				</div>
-	// 			</div>
-	// 		</>
-	// 	);
-	// } else {
+	function HandleNextTrack() {
+		console.log("next track");
+		player.nextTrack();
+	}
+	function HandlePreviousTrack() {
+		console.log("previous track");
+		player.previousTrack();
+	}
 	return (
-		<>
+		<div
+			className={`w-screen flex flex-col justify-center items-center h-screen p-4 py-2 gap-4 `}
+			style={{ backgroundColor: data.vibrant }}
+		>
+			<img
+				src={imgUrl}
+				className="w-[35%] aspect-square backdrop-blur-lg drop-shadow-xl shadow-2xl rounded-md "
+				alt={imgAlt}
+			/>
 			<div
-				className={`w-full flex flex-col min-h-screen p-4 py-2 gap-4`}
-				style={{ backgroundColor: data.vibrant }}
+				className={`w-[50%] flex flex-col text-center items-center justify-center text-[${data.darkVibrant}]`}
 			>
-				<img
-					src={imgUrl}
-					className="w-[35%] aspect-square backdrop-blur-lg drop-shadow-xl shadow-2xl rounded-md "
-					alt={imgAlt}
-				/>
-				<div
-					className={`w-[50%] flex flex-col text-center items-center justify-center text-[${data.darkVibrant}]`}
-				>
-					<div className="text-2xl font-extrabold"> {songName}</div>
-					<div className="text-lg opacity-75 font-light">
-						{" "}
-						{albumName} - {artistName}
-					</div>
-					<div className="w-full"></div>
+				<div className="text-2xl font-extrabold"> {songName}</div>
+				<div className="text-lg opacity-75 font-light">
+					{" "}
+					{albumName} - {artistName}
 				</div>
+				<div className="w-full"></div>
 			</div>
-		</>
+			<div
+				className={`w-[50%] flex flex-row text-center items-center justify-center text-[${data.darkVibrant}] gap-6`}
+			>
+				<ChevronLeftIcon className="h-8 w-8" onClick={HandlePreviousTrack} />
+				<ChevronRightIcon className="h-8 w-8" onClick={HandleNextTrack} />
+			</div>
+		</div>
 	);
 }
-// }
 
 export default WebPlayback;

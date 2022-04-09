@@ -7,7 +7,7 @@ import styles from '../styles/Home.module.css'
 const Home: NextPage = ({ token }: any) => {
 	console.log(token)
 	return (
-		<>		{token !== "I hate u" && <WebPlayback token={token} />}
+		<>		{token !== "I hate u" && <div className='h-screen w-screen flex flex-row items-center justify-center '><WebPlayback token={token} /></div>}
 			{
 				token === "I hate u" && <div className='h-screen w-screen flex flex-row items-center justify-center '><a className='text-6xl ' href='/api/login'>hi</a></div>
 			}</>

@@ -14,12 +14,13 @@ export default function handler(
 	res: NextApiResponse<Data>
 ) {
 	var code = req.query.code;
-
+	const baseUrl = process.env.BASE_URL;
+	console.log("baseUrl:" + baseUrl);
 	var authOptions = {
 		url: "https://accounts.spotify.com/api/token",
 		form: {
 			code: code,
-			redirect_uri: "http://localhost:3000/api/callback",
+			redirect_uri: process.env.BASE_URL + "/api/callback",
 			grant_type: "authorization_code",
 		},
 		headers: {
